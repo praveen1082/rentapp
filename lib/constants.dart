@@ -39,4 +39,6 @@ class Constants {
       child: ElevatedButton(onPressed: () {}, child: labeltodisplay),
     );
   }
+
+  static const backIcon = Icon(Icons.clear_rounded);
 }

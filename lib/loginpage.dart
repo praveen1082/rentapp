@@ -47,7 +47,7 @@ class _LoginPageState extends State<LoginPage> {
                     prefixIcon: Icon(Icons.password)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return '**Please enter some text. Email is required to Login**';
+                    return '**Please enter password. Password is required to Login**';
                   }
                   return null;
                 },
@@ -59,7 +59,39 @@ class _LoginPageState extends State<LoginPage> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {}
                   },
-                  child: Text('Login'))
+                  child: Text('Login')),
+              SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Container(
+                      height: 3.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white24),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Text("OR"),
+                  SizedBox(
+                    width: 5.0,
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: 3.0,
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.white24),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              Text("Haven't sign up yet?"),
+              ElevatedButton(onPressed: () {}, child: Text('Sign Up!'))
             ],
           ),
         ),

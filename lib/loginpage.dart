@@ -15,27 +15,53 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
+        // backgroundColor: Colors.amber,
         centerTitle: true,
         title: Text(widget.title),
       ),
       body: Form(
         key: _formKey,
-        child: Column(
-          children: [
-            TextFormField(
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'please enter some text. Email is required to Login';
-                }
-                return null;
-              },
-            ),
-            ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {}
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              TextFormField(
+                decoration: InputDecoration(
+                    focusColor: Colors.white12,
+                    labelText: 'Email',
+                    prefixIcon: Icon(Icons.email)),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '**Please enter some text. Email is required to Login**';
+                  }
+                  return null;
                 },
-                child: Text('submit'))
-          ],
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              TextFormField(
+                decoration: InputDecoration(
+                    focusColor: Colors.white12,
+                    labelText: 'Password',
+                    prefixIcon: Icon(Icons.password)),
+                validator: (value) {
+                  if (value == null || value.isEmpty) {
+                    return '**Please enter some text. Email is required to Login**';
+                  }
+                  return null;
+                },
+              ),
+              SizedBox(
+                height: 10.0,
+              ),
+              ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                  child: Text('Login'))
+            ],
+          ),
         ),
       ),
     );

@@ -23,10 +23,11 @@ class _LoginPageState extends State<LoginPage> {
         key: _formKey,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(
+          child: ListView(
+            shrinkWrap: true,
             children: [
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     focusColor: Colors.white12,
                     labelText: 'Email',
                     prefixIcon: Icon(Icons.email)),
@@ -37,11 +38,11 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              SizedBox(
+              const SizedBox(
                 height: 10.0,
               ),
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     focusColor: Colors.white12,
                     labelText: 'Password',
                     prefixIcon: Icon(Icons.password)),
@@ -52,27 +53,23 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              SizedBox(
-                height: 10.0,
+              const SizedBox(
+                height: 20.0,
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
-                  },
-                  child: Text('Login')),
-              SizedBox(
+              Container(
+                height: 50.0,
+                child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {}
+                    },
+                    child: const Text('Login')),
+              ),
+              const SizedBox(
                 height: 10.0,
               ),
               Row(
-                children: [
-                  Expanded(
-                    child: Container(
-                      height: 3.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white24),
-                      ),
-                    ),
-                  ),
+                children: const [
+                  Expanded(child: Divider()),
                   SizedBox(
                     width: 5.0,
                   ),
@@ -80,18 +77,73 @@ class _LoginPageState extends State<LoginPage> {
                   SizedBox(
                     width: 5.0,
                   ),
-                  Expanded(
-                    child: Container(
-                      height: 3.0,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: Colors.white24),
-                      ),
-                    ),
-                  ),
+                  Expanded(child: Divider()),
                 ],
               ),
-              Text("Haven't sign up yet?"),
-              ElevatedButton(onPressed: () {}, child: Text('Sign Up!'))
+              const SizedBox(
+                height: 10.0,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  const Text("Haven't sign up yet?"),
+                  const SizedBox(
+                    width: 20.0,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {}, child: const Text('Sign Up!'))
+                ],
+              ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              const Divider(),
+              // SizedBox(
+              //   height: 10.0,
+              // ),
+              // Row(
+              //   children: [
+              //     Expanded(
+              //       child: Container(
+              //         height: 3.0,
+              //         decoration: BoxDecoration(
+              //           border: Border.all(color: Colors.white24),
+              //         ),
+              //       ),
+              //     ),
+              //     SizedBox(
+              //       width: 5.0,
+              //     ),
+              //     Text("OR"),
+              //     SizedBox(
+              //       width: 5.0,
+              //     ),
+              //     Expanded(
+              //       child: Container(
+              //         height: 3.0,
+              //         decoration: BoxDecoration(
+              //           border: Border.all(color: Colors.white24),
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              const SizedBox(
+                height: 10.0,
+              ),
+              Container(
+                height: 50.0,
+                child: ElevatedButton(
+                    onPressed: () {}, child: const Text('Login with FaceBook')),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Container(
+                  height: 50.0,
+                  child: ElevatedButton(
+                      onPressed: () {}, child: const Text('Login with Google')))
             ],
           ),
         ),

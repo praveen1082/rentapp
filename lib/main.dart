@@ -13,6 +13,7 @@ class RentApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Rent App',
       theme: ThemeData(
+        brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
       home: const LoginPage(title: 'Login Page'),

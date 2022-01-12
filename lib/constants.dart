@@ -15,10 +15,10 @@ class Constants {
   static const smallSizedBoxVertical = SizedBox(
     width: 5,
   );
-  static const VisibilityIcon = Icon(Icons.visibility);
-  static const VisibilityoffIcon = Icon(Icons.visibility_off);
-  static const EmailIconLoginPage = Icon(Icons.email);
-  static const PasswordIconLoginPage = Icon(Icons.password);
+  static const visibilityIcon = Icon(Icons.visibility);
+  static const visibilityoffIcon = Icon(Icons.visibility_off);
+  static const emailIconLoginPage = Icon(Icons.email);
+  static const passwordIconLoginPage = Icon(Icons.password);
   static const divider = Divider();
   static const buttonContainerHeight = 50.0;
   static const nulloremptyemailmsg =
@@ -41,4 +41,5 @@ class Constants {
   }
 
   static const backIcon = Icon(Icons.clear_rounded);
+  static const firstNameLabelRegisterPage = "First Name";
 }

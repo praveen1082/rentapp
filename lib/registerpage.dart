@@ -17,6 +17,17 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: Constants.appbarElevation,
         actions: [IconButton(onPressed: () {}, icon: Constants.backIcon)],
       ),
+      body: ListView(
+        shrinkWrap: true,
+        padding: Constants.wholePagePadding,
+        children: [
+          TextFormField(
+            decoration: const InputDecoration(
+              labelText: Constants.firstNameLabelRegisterPage,
+            ),
+          )
+        ],
+      ),
     );
   }
 }

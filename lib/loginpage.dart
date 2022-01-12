@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rentapp/constants.dart';
+import 'package:rentapp/registerpage.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);
@@ -11,7 +12,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  var passwordvisibilityicon = Constants.VisibilityIcon;
+  var passwordvisibilityicon = Constants.visibilityIcon;
 
   var passwordIsVisible = false;
   @override
@@ -34,7 +35,7 @@ class _LoginPageState extends State<LoginPage> {
               TextFormField(
                 decoration: const InputDecoration(
                     labelText: Constants.emaillabeltext,
-                    prefixIcon: Constants.EmailIconLoginPage),
+                    prefixIcon: Constants.emailIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return Constants.nulloremptyemailmsg;
@@ -51,14 +52,14 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           passwordIsVisible = passwordIsVisible ? false : true;
                           passwordvisibilityicon = passwordIsVisible
-                              ? Constants.VisibilityIcon
-                              : Constants.VisibilityoffIcon;
+                              ? Constants.visibilityIcon
+                              : Constants.visibilityoffIcon;
                         });
                       },
                       icon: passwordvisibilityicon,
                     ),
                     labelText: Constants.passwordlabeltext,
-                    prefixIcon: Constants.PasswordIconLoginPage),
+                    prefixIcon: Constants.passwordIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return Constants.nulloremptypasswordmsg;
@@ -94,7 +95,13 @@ class _LoginPageState extends State<LoginPage> {
                   Constants.loginQuestionText,
                   Constants.bigSizedBoxVertical,
                   ElevatedButton(
-                      onPressed: () {}, child: Constants.registerButtonText)
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => RegisterPage()));
+                      },
+                      child: Constants.registerButtonText)
                 ],
               ),
               Constants.smallSizedBoxHorizontal,

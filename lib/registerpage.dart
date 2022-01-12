@@ -21,36 +21,18 @@ class _RegisterPageState extends State<RegisterPage> {
         shrinkWrap: true,
         padding: Constants.wholePagePadding,
         children: [
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: Constants.firstNameLabelRegisterPage,
-            ),
-          ),
-          TextFormField(
-            decoration: const InputDecoration(
-              labelText: Constants.lastNameLabelRegisterPage,
-            ),
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: Constants.emailLabelRegisterPage,
-            ),
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: Constants.phoneLabelRegisterPage,
-            ),
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: Constants.passwordLabelRegisterPage,
-            ),
-          ),
-          TextFormField(
-            decoration: InputDecoration(
-              labelText: Constants.confirmPasswordLabelRegisterPage,
-            ),
-          )
+          Constants.registerPageTextFormBuilder(
+              Constants.firstNameLabelRegisterPage),
+          Constants.registerPageTextFormBuilder(
+              Constants.lastNameLabelRegisterPage),
+          Constants.registerPageTextFormBuilder(
+              Constants.emailLabelRegisterPage),
+          Constants.registerPageTextFormBuilder(
+              Constants.phoneLabelRegisterPage),
+          Constants.registerPageTextFormBuilder(
+              Constants.passwordLabelRegisterPage),
+          Constants.registerPageTextFormBuilder(
+              Constants.confirmPasswordLabelRegisterPage),
         ],
       ),
     );

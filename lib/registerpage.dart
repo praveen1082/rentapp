@@ -25,6 +25,31 @@ class _RegisterPageState extends State<RegisterPage> {
             decoration: const InputDecoration(
               labelText: Constants.firstNameLabelRegisterPage,
             ),
+          ),
+          TextFormField(
+            decoration: const InputDecoration(
+              labelText: Constants.lastNameLabelRegisterPage,
+            ),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: Constants.emailLabelRegisterPage,
+            ),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: Constants.phoneLabelRegisterPage,
+            ),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: Constants.passwordLabelRegisterPage,
+            ),
+          ),
+          TextFormField(
+            decoration: InputDecoration(
+              labelText: Constants.confirmPasswordLabelRegisterPage,
+            ),
           )
         ],
       ),

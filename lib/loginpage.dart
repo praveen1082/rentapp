@@ -32,7 +32,8 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               TextFormField(
                 decoration: const InputDecoration(
-                    labelText: 'Email', prefixIcon: Icon(Icons.email)),
+                    labelText: 'Email',
+                    prefixIcon: Constants.EmailIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '**Please enter some text. Email is required to Login**';
@@ -56,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
                       icon: passwordvisibilityicon,
                     ),
                     labelText: 'Password',
-                    prefixIcon: Icon(Icons.password)),
+                    prefixIcon: Constants.PasswordIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '**Please enter password. Password is required to Login**';

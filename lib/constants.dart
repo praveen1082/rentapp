@@ -17,4 +17,6 @@ class Constants {
   );
   static const VisibilityIcon = Icon(Icons.visibility);
   static const VisibilityoffIcon = Icon(Icons.visibility_off);
+  static const EmailIconLoginPage = Icon(Icons.email);
+  static const PasswordIconLoginPage = Icon(Icons.password);
 }

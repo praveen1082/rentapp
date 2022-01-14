@@ -10,6 +10,9 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  var passwordvisibilityicon = Icon(Icons.visibility_off);
+
+  var passwordIsVisible = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +45,19 @@ class _LoginPageState extends State<LoginPage> {
                 height: 10.0,
               ),
               TextFormField(
-                decoration: const InputDecoration(
+                obscureText: !passwordIsVisible,
+                decoration: InputDecoration(
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        setState(() {
+                          passwordIsVisible = passwordIsVisible ? false : true;
+                          passwordvisibilityicon = passwordIsVisible
+                              ? Icon(Icons.visibility)
+                              : Icon(Icons.visibility_off);
+                        });
+                      },
+                      icon: passwordvisibilityicon,
+                    ),
                     focusColor: Colors.white12,
                     labelText: 'Password',
                     prefixIcon: Icon(Icons.password)),
@@ -99,36 +114,6 @@ class _LoginPageState extends State<LoginPage> {
                 height: 10.0,
               ),
               const Divider(),
-              // SizedBox(
-              //   height: 10.0,
-              // ),
-              // Row(
-              //   children: [
-              //     Expanded(
-              //       child: Container(
-              //         height: 3.0,
-              //         decoration: BoxDecoration(
-              //           border: Border.all(color: Colors.white24),
-              //         ),
-              //       ),
-              //     ),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Text("OR"),
-              //     SizedBox(
-              //       width: 5.0,
-              //     ),
-              //     Expanded(
-              //       child: Container(
-              //         height: 3.0,
-              //         decoration: BoxDecoration(
-              //           border: Border.all(color: Colors.white24),
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
               const SizedBox(
                 height: 10.0,
               ),

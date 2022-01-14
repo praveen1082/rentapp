@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/constants.dart';
 import 'package:rentapp/loginpage.dart';
 
 void main() {
@@ -16,7 +17,7 @@ class RentApp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
       ),
-      home: const LoginPage(title: 'Login Page'),
+      home: const LoginPage(title: Constants.loginPageAppBarTitle),
     );
   }
 }

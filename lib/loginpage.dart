@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/constants.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key, required this.title}) : super(key: key);
@@ -17,15 +18,15 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
+        elevation: Constants.appbarElevation,
         // backgroundColor: Colors.amber,
-        centerTitle: true,
+        centerTitle: Constants.centerappbarTitle,
         title: Text(widget.title),
       ),
       body: Form(
         key: _formKey,
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: Constants.wholePagePadding,
           child: ListView(
             shrinkWrap: true,
             children: [

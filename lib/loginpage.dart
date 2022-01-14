@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  var passwordvisibilityicon = Icon(Icons.visibility_off);
+  var passwordvisibilityicon;
 
   var passwordIsVisible = false;
   @override
@@ -32,9 +32,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               TextFormField(
                 decoration: const InputDecoration(
-                    focusColor: Colors.white12,
-                    labelText: 'Email',
-                    prefixIcon: Icon(Icons.email)),
+                    labelText: 'Email', prefixIcon: Icon(Icons.email)),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return '**Please enter some text. Email is required to Login**';
@@ -42,9 +40,7 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              Constants.smallSizedBoxHorizontal,
               TextFormField(
                 obscureText: !passwordIsVisible,
                 decoration: InputDecoration(
@@ -53,13 +49,12 @@ class _LoginPageState extends State<LoginPage> {
                         setState(() {
                           passwordIsVisible = passwordIsVisible ? false : true;
                           passwordvisibilityicon = passwordIsVisible
-                              ? Icon(Icons.visibility)
-                              : Icon(Icons.visibility_off);
+                              ? Constants.VisibilityIcon
+                              : Constants.VisibilityoffIcon;
                         });
                       },
                       icon: passwordvisibilityicon,
                     ),
-                    focusColor: Colors.white12,
                     labelText: 'Password',
                     prefixIcon: Icon(Icons.password)),
                 validator: (value) {
@@ -69,9 +64,7 @@ class _LoginPageState extends State<LoginPage> {
                   return null;
                 },
               ),
-              const SizedBox(
-                height: 20.0,
-              ),
+              Constants.bigSizedBoxHorizontal,
               Container(
                 height: 50.0,
                 child: ElevatedButton(
@@ -80,25 +73,17 @@ class _LoginPageState extends State<LoginPage> {
                     },
                     child: const Text('Login')),
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              Constants.bigSizedBoxHorizontal,
               Row(
                 children: const [
                   Expanded(child: Divider()),
-                  SizedBox(
-                    width: 5.0,
-                  ),
+                  Constants.smallSizedBoxVertical,
                   Text("OR"),
-                  SizedBox(
-                    width: 5.0,
-                  ),
+                  Constants.smallSizedBoxVertical,
                   Expanded(child: Divider()),
                 ],
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              Constants.smallSizedBoxHorizontal,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -111,21 +96,15 @@ class _LoginPageState extends State<LoginPage> {
                       onPressed: () {}, child: const Text('Sign Up!'))
                 ],
               ),
-              const SizedBox(
-                height: 10.0,
-              ),
+              Constants.smallSizedBoxHorizontal,
               const Divider(),
-              const SizedBox(
-                height: 10.0,
-              ),
+              Constants.smallSizedBoxHorizontal,
               Container(
                 height: 50.0,
                 child: ElevatedButton(
                     onPressed: () {}, child: const Text('Login with FaceBook')),
               ),
-              const SizedBox(
-                height: 10,
-              ),
+              Constants.smallSizedBoxHorizontal,
               Container(
                   height: 50.0,
                   child: ElevatedButton(

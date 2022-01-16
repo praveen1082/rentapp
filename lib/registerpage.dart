@@ -23,14 +23,19 @@ class _RegisterPageState extends State<RegisterPage> {
         children: [
           Constants.registerPageTextFormBuilder(
               Constants.firstNameLabelRegisterPage),
+          Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.lastNameLabelRegisterPage),
+          Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.emailLabelRegisterPage),
+          Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.phoneLabelRegisterPage),
+          Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.passwordLabelRegisterPage),
+          Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.confirmPasswordLabelRegisterPage),
         ],

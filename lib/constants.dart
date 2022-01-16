@@ -15,7 +15,7 @@ class Constants {
   static const phoneLabelRegisterPage = "Phone";
   static const passwordLabelRegisterPage = "Password";
   static const confirmPasswordLabelRegisterPage = "Confirm Password";
-  static const registerbuttonlabel = "Register";
+  static const registerbuttonlabel = Text("Register");
 
   static const loginButtonText = Text('Login');
   static const registerButtonText = Text('Sign Up!');

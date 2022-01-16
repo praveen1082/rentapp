@@ -99,7 +99,9 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => RegisterPage()));
+                                builder: (context) => RegisterPage(
+                                      title: Constants.registerPageTitle,
+                                    )));
                       },
                       child: Constants.registerButtonText)
                 ],
@@ -107,10 +109,9 @@ class _LoginPageState extends State<LoginPage> {
               Constants.smallSizedBoxHorizontal,
               Constants.divider,
               Constants.smallSizedBoxHorizontal,
-              Constants.socialMediaLoginButton(
-                  Constants.loginFaceBookButtonText),
+              Constants.button(Constants.loginFaceBookButtonText),
               Constants.smallSizedBoxHorizontal,
-              Constants.socialMediaLoginButton(Constants.loginGoogleButtonText),
+              Constants.button(Constants.loginGoogleButtonText),
             ],
           ),
         ),

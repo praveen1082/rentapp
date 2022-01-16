@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:rentapp/constants.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({Key? key}) : super(key: key);
+  const RegisterPage({Key? key, required this.title}) : super(key: key);
+  final title;
 
   @override
   _RegisterPageState createState() => _RegisterPageState();
@@ -38,6 +39,7 @@ class _RegisterPageState extends State<RegisterPage> {
           Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.confirmPasswordLabelRegisterPage),
+          Constants.button(Constants.registerbuttonlabel),
         ],
       ),
     );

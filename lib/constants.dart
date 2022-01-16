@@ -34,7 +34,7 @@ class Constants {
   static const loginGoogleButtonText = Text('Login with Google');
   static const loginoptionText = Text('OR');
   static const loginQuestionText = Text("Haven't sign up yet?");
-  static socialMediaLoginButton(labeltodisplay) {
+  static button(labeltodisplay) {
     return Container(
       height: Constants.buttonContainerHeight,
       child: ElevatedButton(onPressed: () {}, child: labeltodisplay),
@@ -48,7 +48,7 @@ class Constants {
   static const phoneLabelRegisterPage = "Phone";
   static const passwordLabelRegisterPage = "Password";
   static const confirmPasswordLabelRegisterPage = "Confirm Password";
-
+  static const registerbuttonlabel = "Register";
   static registerPageTextFormBuilder(labeltext) {
     return TextFormField(
       decoration: InputDecoration(
@@ -56,4 +56,6 @@ class Constants {
       ),
     );
   }
+
+  static const registerPageTitle = "Register Page";
 }

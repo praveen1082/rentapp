@@ -14,6 +14,7 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: widget.title,
         centerTitle: Constants.centerappbarTitle,
         elevation: Constants.appbarElevation,
         actions: [IconButton(onPressed: () {}, icon: Constants.backIcon)],
@@ -39,7 +40,8 @@ class _RegisterPageState extends State<RegisterPage> {
           Constants.smallSizedBoxHorizontal,
           Constants.registerPageTextFormBuilder(
               Constants.confirmPasswordLabelRegisterPage),
-          Constants.button(Constants.registerbuttonlabel),
+          Constants.bigSizedBoxHorizontal,
+          Constants.customButton(Constants.registerbuttonlabel),
         ],
       ),
     );

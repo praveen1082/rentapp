@@ -42,6 +42,21 @@ class _RegisterPageState extends State<RegisterPage> {
               Constants.confirmPasswordLabelRegisterPage),
           Constants.bigSizedBoxHorizontal,
           Constants.customButton(Constants.registerbuttonlabel),
+          Constants.bigSizedBoxHorizontal,
+          Row(
+            children: const [
+              Expanded(child: Constants.divider),
+              Constants.smallSizedBoxVertical,
+              Constants.loginoptionText,
+              Constants.smallSizedBoxVertical,
+              Expanded(child: Constants.divider),
+            ],
+          ),
+          Constants.smallSizedBoxHorizontal,
+          Constants.customButton(Constants.loginFaceBookButtonText),
+          Constants.smallSizedBoxHorizontal,
+          Constants.customButton(Constants.loginGoogleButtonText),
+          Constants.smallSizedBoxHorizontal,
         ],
       ),
     );

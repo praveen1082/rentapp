@@ -21,6 +21,8 @@ class Constants {
   static const registerButtonText = Text('Sign Up!');
   static const loginFaceBookButtonText = Text('Login with FaceBook');
   static const loginGoogleButtonText = Text('Login with Google');
+  static const registernFaceBookButtonText = Text('Sign-up with FaceBook');
+  static const registerGoogleButtonText = Text('Sign-up with Google');
   static const loginoptionText = Text('OR');
   static const loginQuestionText = Text("Haven't sign up yet?");
   static const centerappbarTitle = true;

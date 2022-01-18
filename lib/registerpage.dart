@@ -32,22 +32,22 @@ class _RegisterPageState extends State<RegisterPage> {
           shrinkWrap: true,
           padding: Constants.wholePagePadding,
           children: [
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.firstNameLabelRegisterPage, firstnamecontroller),
             Constants.smallSizedBoxHorizontal,
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.lastNameLabelRegisterPage, lastnamecontroller),
             Constants.smallSizedBoxHorizontal,
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.emailLabelRegisterPage, emailcontroller),
             Constants.smallSizedBoxHorizontal,
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.phoneLabelRegisterPage, phonecontroller),
             Constants.smallSizedBoxHorizontal,
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.passwordLabelRegisterPage, passwordcontroller),
             Constants.smallSizedBoxHorizontal,
-            Constants.registerPageTextFormBuilder(
+            registerPageTextFormBuilder(
                 Constants.confirmPasswordLabelRegisterPage,
                 confirmpasswordcontroller),
             Constants.bigSizedBoxHorizontal,
@@ -69,6 +69,16 @@ class _RegisterPageState extends State<RegisterPage> {
             Constants.smallSizedBoxHorizontal,
           ],
         ),
+      ),
+    );
+  }
+
+  Widget registerPageTextFormBuilder(labeltext, controller) {
+    return TextFormField(
+      //validator: _validator(controller.text),
+      controller: controller,
+      decoration: InputDecoration(
+        labelText: labeltext,
       ),
     );
   }

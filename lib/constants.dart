@@ -53,13 +53,4 @@ class Constants {
       child: ElevatedButton(onPressed: () {}, child: labeltodisplay),
     );
   }
-
-  static Widget registerPageTextFormBuilder(labeltext, controller) {
-    return TextFormField(
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: labeltext,
-      ),
-    );
-  }
 }

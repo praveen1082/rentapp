@@ -10,6 +10,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  final _formKey = GlobalKey<FormState>();
+  TextEditingController firstnamecontroller = TextEditingController();
+  TextEditingController lastnamecontroller = TextEditingController();
+  TextEditingController emailcontroller = TextEditingController();
+  TextEditingController phonecontroller = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  TextEditingController confirmpasswordcontroller = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,45 +26,48 @@ class _RegisterPageState extends State<RegisterPage> {
         elevation: Constants.appbarElevation,
         actions: [IconButton(onPressed: () {}, icon: Constants.backIcon)],
       ),
-      body: ListView(
-        shrinkWrap: true,
-        padding: Constants.wholePagePadding,
-        children: [
-          Constants.registerPageTextFormBuilder(
-              Constants.firstNameLabelRegisterPage),
-          Constants.smallSizedBoxHorizontal,
-          Constants.registerPageTextFormBuilder(
-              Constants.lastNameLabelRegisterPage),
-          Constants.smallSizedBoxHorizontal,
-          Constants.registerPageTextFormBuilder(
-              Constants.emailLabelRegisterPage),
-          Constants.smallSizedBoxHorizontal,
-          Constants.registerPageTextFormBuilder(
-              Constants.phoneLabelRegisterPage),
-          Constants.smallSizedBoxHorizontal,
-          Constants.registerPageTextFormBuilder(
-              Constants.passwordLabelRegisterPage),
-          Constants.smallSizedBoxHorizontal,
-          Constants.registerPageTextFormBuilder(
-              Constants.confirmPasswordLabelRegisterPage),
-          Constants.bigSizedBoxHorizontal,
-          Constants.customButton(Constants.registerbuttonlabel),
-          Constants.bigSizedBoxHorizontal,
-          Row(
-            children: const [
-              Expanded(child: Constants.divider),
-              Constants.smallSizedBoxVertical,
-              Constants.loginoptionText,
-              Constants.smallSizedBoxVertical,
-              Expanded(child: Constants.divider),
-            ],
-          ),
-          Constants.smallSizedBoxHorizontal,
-          Constants.customButton(Constants.loginFaceBookButtonText),
-          Constants.smallSizedBoxHorizontal,
-          Constants.customButton(Constants.loginGoogleButtonText),
-          Constants.smallSizedBoxHorizontal,
-        ],
+      body: Form(
+        key: _formKey,
+        child: ListView(
+          shrinkWrap: true,
+          padding: Constants.wholePagePadding,
+          children: [
+            Constants.registerPageTextFormBuilder(
+                Constants.firstNameLabelRegisterPage),
+            Constants.smallSizedBoxHorizontal,
+            Constants.registerPageTextFormBuilder(
+                Constants.lastNameLabelRegisterPage),
+            Constants.smallSizedBoxHorizontal,
+            Constants.registerPageTextFormBuilder(
+                Constants.emailLabelRegisterPage),
+            Constants.smallSizedBoxHorizontal,
+            Constants.registerPageTextFormBuilder(
+                Constants.phoneLabelRegisterPage),
+            Constants.smallSizedBoxHorizontal,
+            Constants.registerPageTextFormBuilder(
+                Constants.passwordLabelRegisterPage),
+            Constants.smallSizedBoxHorizontal,
+            Constants.registerPageTextFormBuilder(
+                Constants.confirmPasswordLabelRegisterPage),
+            Constants.bigSizedBoxHorizontal,
+            Constants.customButton(Constants.registerbuttonlabel),
+            Constants.bigSizedBoxHorizontal,
+            Row(
+              children: const [
+                Expanded(child: Constants.divider),
+                Constants.smallSizedBoxVertical,
+                Constants.loginoptionText,
+                Constants.smallSizedBoxVertical,
+                Expanded(child: Constants.divider),
+              ],
+            ),
+            Constants.smallSizedBoxHorizontal,
+            Constants.customButton(Constants.loginFaceBookButtonText),
+            Constants.smallSizedBoxHorizontal,
+            Constants.customButton(Constants.loginGoogleButtonText),
+            Constants.smallSizedBoxHorizontal,
+          ],
+        ),
       ),
     );
   }

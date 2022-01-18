@@ -33,22 +33,23 @@ class _RegisterPageState extends State<RegisterPage> {
           padding: Constants.wholePagePadding,
           children: [
             Constants.registerPageTextFormBuilder(
-                Constants.firstNameLabelRegisterPage),
+                Constants.firstNameLabelRegisterPage, firstnamecontroller),
             Constants.smallSizedBoxHorizontal,
             Constants.registerPageTextFormBuilder(
-                Constants.lastNameLabelRegisterPage),
+                Constants.lastNameLabelRegisterPage, lastnamecontroller),
             Constants.smallSizedBoxHorizontal,
             Constants.registerPageTextFormBuilder(
-                Constants.emailLabelRegisterPage),
+                Constants.emailLabelRegisterPage, emailcontroller),
             Constants.smallSizedBoxHorizontal,
             Constants.registerPageTextFormBuilder(
-                Constants.phoneLabelRegisterPage),
+                Constants.phoneLabelRegisterPage, phonecontroller),
             Constants.smallSizedBoxHorizontal,
             Constants.registerPageTextFormBuilder(
-                Constants.passwordLabelRegisterPage),
+                Constants.passwordLabelRegisterPage, passwordcontroller),
             Constants.smallSizedBoxHorizontal,
             Constants.registerPageTextFormBuilder(
-                Constants.confirmPasswordLabelRegisterPage),
+                Constants.confirmPasswordLabelRegisterPage,
+                confirmpasswordcontroller),
             Constants.bigSizedBoxHorizontal,
             Constants.customButton(Constants.registerbuttonlabel),
             Constants.bigSizedBoxHorizontal,

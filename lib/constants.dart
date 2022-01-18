@@ -54,8 +54,9 @@ class Constants {
     );
   }
 
-  static Widget registerPageTextFormBuilder(labeltext) {
+  static Widget registerPageTextFormBuilder(labeltext, controller) {
     return TextFormField(
+      controller: controller,
       decoration: InputDecoration(
         labelText: labeltext,
       ),

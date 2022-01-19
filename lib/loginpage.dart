@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:rentapp/apiservice.dart';
 import 'package:rentapp/constants.dart';
+import 'package:rentapp/homepage.dart';
 import 'package:rentapp/registerpage.dart';
 
 class LoginPage extends StatefulWidget {
@@ -18,7 +19,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-
     service = ApiService();
   }
 
@@ -107,8 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    RegisterPage(title: "Register Page")));
+                                builder: (context) => HomePage()));
                       } else {
                         final snackBar = SnackBar(
                           content: Text("Cannot login"),

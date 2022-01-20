@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:rentapp/loginmodel.dart';
 import 'package:rentapp/usermodel.dart';
 
 class DataResponse<T> {
@@ -81,6 +82,27 @@ class ApiService {
       r.data = null;
     }
     return r;
+  }
+
+  Future<bool> login(username, password) async {
+    try {
+      //LoginModel u = new LoginModel();
+      // u.username = username;
+      // u.password = password;
+      var response = await dio
+          .post('/api/user', data: {'email': username, 'password': password});
+      if (response.statusCode != 200) {
+        return false;
+      } else {
+        var data = response.data;
+        if (data.message == "successfully logged in") {
+          return true;
+        }
+      }
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 }
 

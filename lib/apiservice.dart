@@ -89,13 +89,13 @@ class ApiService {
       //LoginModel u = new LoginModel();
       // u.username = username;
       // u.password = password;
-      var response = await dio
-          .post('/api/user', data: {'email': username, 'password': password});
+      var response = await dio.post('/api/user/login',
+          data: {'email': username, 'password': password});
       if (response.statusCode != 200) {
         return false;
       } else {
         var data = response.data;
-        if (data.message == "successfully logged in") {
+        if (data.message == "Success") {
           return true;
         }
       }

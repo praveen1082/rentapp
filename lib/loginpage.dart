@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/apiservice.dart';
 import 'package:rentapp/constants.dart';
 import 'package:rentapp/registerpage.dart';
 
@@ -11,6 +12,23 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  ApiService service = ApiService();
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordcontroller = TextEditingController();
+  @override
+  void initState() {
+    super.initState();
+
+    service = ApiService();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    usernameController.dispose();
+    passwordcontroller.dispose();
+  }
+
   final _formKey = GlobalKey<FormState>();
   var passwordvisibilityicon = Constants.visibilityIcon;
 
@@ -33,6 +51,7 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Constants.bigSizedBoxHorizontal,
               TextFormField(
+                controller: usernameController,
                 decoration: const InputDecoration(
                     labelText: Constants.emaillabeltext,
                     prefixIcon: Constants.emailIconLoginPage),
@@ -45,6 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
               Constants.smallSizedBoxHorizontal,
               TextFormField(
+                controller: passwordcontroller,
                 obscureText: !passwordIsVisible,
                 decoration: InputDecoration(
                     suffixIcon: IconButton(
@@ -72,7 +92,30 @@ class _LoginPageState extends State<LoginPage> {
                 height: Constants.buttonContainerHeight,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (_formKey.currentState!.validate()) {}
+                    if (!_formKey.currentState!.validate()) {
+                      final snackBar = SnackBar(
+                        content: Text("logging in"),
+                        duration: Duration(seconds: 2),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    }
+                    service
+                        .login(usernameController.text, passwordcontroller.text)
+                        .then((value) {
+                      if (value) {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    RegisterPage(title: "Register Page")));
+                      } else {
+                        final snackBar = SnackBar(
+                          content: Text("Cannot login"),
+                          duration: Duration(seconds: 2),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      }
+                    });
                   },
                   child: Constants.loginButtonText,
                 ),

@@ -102,6 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                     service
                         .login(usernameController.text, passwordcontroller.text)
                         .then((value) {
+                      print("value value is: " + value.toString());
                       if (value) {
                         Navigator.push(
                             context,

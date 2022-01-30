@@ -19,4 +19,18 @@ class Constants {
   static const VisibilityoffIcon = Icon(Icons.visibility_off);
   static const EmailIconLoginPage = Icon(Icons.email);
   static const PasswordIconLoginPage = Icon(Icons.password);
+  static const divider = Divider();
+  static const buttonContainerHeight = 50.0;
+  static const nulloremptyemailmsg =
+      "**Please enter some text. Email is required to Login**";
+  static const emaillabeltext = "Email";
+  static const passwordlabeltext = "Password";
+  static const nulloremptypasswordmsg =
+      "**Please enter password. password is required to Login**";
+  static const loginButtonText = Text('Login');
+  static const registerButtonText = Text('Sign Up!');
+  static const loginFaceBookButtonText = Text('Login with FaceBook');
+  static const loginGoogleButtonText = Text('Login with Google');
+  static const loginoptionText = Text('OR');
+  static const loginQuestionText = Text("Haven't sign up yet?");
 }

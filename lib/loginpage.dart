@@ -11,7 +11,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
-  var passwordvisibilityicon;
+  var passwordvisibilityicon = Constants.VisibilityIcon;
 
   var passwordIsVisible = false;
   @override
@@ -30,13 +30,14 @@ class _LoginPageState extends State<LoginPage> {
           child: ListView(
             shrinkWrap: true,
             children: [
+              Constants.bigSizedBoxHorizontal,
               TextFormField(
                 decoration: const InputDecoration(
-                    labelText: 'Email',
+                    labelText: Constants.emaillabeltext,
                     prefixIcon: Constants.EmailIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return '**Please enter some text. Email is required to Login**';
+                    return Constants.nulloremptyemailmsg;
                   }
                   return null;
                 },
@@ -56,32 +57,33 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       icon: passwordvisibilityicon,
                     ),
-                    labelText: 'Password',
+                    labelText: Constants.passwordlabeltext,
                     prefixIcon: Constants.PasswordIconLoginPage),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
-                    return '**Please enter password. Password is required to Login**';
+                    return Constants.nulloremptypasswordmsg;
                   }
                   return null;
                 },
               ),
               Constants.bigSizedBoxHorizontal,
               Container(
-                height: 50.0,
+                height: Constants.buttonContainerHeight,
                 child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {}
-                    },
-                    child: const Text('Login')),
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {}
+                  },
+                  child: Constants.loginButtonText,
+                ),
               ),
               Constants.bigSizedBoxHorizontal,
               Row(
                 children: const [
-                  Expanded(child: Divider()),
+                  Expanded(child: Constants.divider),
                   Constants.smallSizedBoxVertical,
-                  Text("OR"),
+                  Constants.loginoptionText,
                   Constants.smallSizedBoxVertical,
-                  Expanded(child: Divider()),
+                  Expanded(child: Constants.divider),
                 ],
               ),
               Constants.smallSizedBoxHorizontal,
@@ -89,27 +91,25 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Text("Haven't sign up yet?"),
-                  const SizedBox(
-                    width: 20.0,
-                  ),
+                  Constants.loginQuestionText,
+                  Constants.bigSizedBoxVertical,
                   ElevatedButton(
-                      onPressed: () {}, child: const Text('Sign Up!'))
+                      onPressed: () {}, child: Constants.registerButtonText)
                 ],
               ),
               Constants.smallSizedBoxHorizontal,
-              const Divider(),
+              Constants.divider,
               Constants.smallSizedBoxHorizontal,
               Container(
-                height: 50.0,
+                height: Constants.buttonContainerHeight,
                 child: ElevatedButton(
-                    onPressed: () {}, child: const Text('Login with FaceBook')),
+                    onPressed: () {}, child: Constants.loginFaceBookButtonText),
               ),
               Constants.smallSizedBoxHorizontal,
               Container(
-                  height: 50.0,
+                  height: Constants.buttonContainerHeight,
                   child: ElevatedButton(
-                      onPressed: () {}, child: const Text('Login with Google')))
+                      onPressed: () {}, child: Constants.loginGoogleButtonText))
             ],
           ),
         ),

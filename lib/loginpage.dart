@@ -100,16 +100,10 @@ class _LoginPageState extends State<LoginPage> {
               Constants.smallSizedBoxHorizontal,
               Constants.divider,
               Constants.smallSizedBoxHorizontal,
-              Container(
-                height: Constants.buttonContainerHeight,
-                child: ElevatedButton(
-                    onPressed: () {}, child: Constants.loginFaceBookButtonText),
-              ),
+              Constants.socialMediaLoginButton(
+                  Constants.loginFaceBookButtonText),
               Constants.smallSizedBoxHorizontal,
-              Container(
-                  height: Constants.buttonContainerHeight,
-                  child: ElevatedButton(
-                      onPressed: () {}, child: Constants.loginGoogleButtonText))
+              Constants.socialMediaLoginButton(Constants.loginGoogleButtonText),
             ],
           ),
         ),

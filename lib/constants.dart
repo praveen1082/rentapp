@@ -33,4 +33,10 @@ class Constants {
   static const loginGoogleButtonText = Text('Login with Google');
   static const loginoptionText = Text('OR');
   static const loginQuestionText = Text("Haven't sign up yet?");
+  static Widget socialMediaLoginButton(labeltodisplay) {
+    return Container(
+      height: Constants.buttonContainerHeight,
+      child: ElevatedButton(onPressed: () {}, child: labeltodisplay),
+    );
+  }
 }

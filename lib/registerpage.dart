@@ -11,6 +11,7 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final _formKey = GlobalKey<FormState>();
+  var firstname, lastname, email, phone, password, confirmpassword;
   TextEditingController firstnamecontroller = TextEditingController();
   TextEditingController lastnamecontroller = TextEditingController();
   TextEditingController emailcontroller = TextEditingController();
@@ -24,7 +25,13 @@ class _RegisterPageState extends State<RegisterPage> {
         title: Text(widget.title),
         centerTitle: Constants.centerappbarTitle,
         elevation: Constants.appbarElevation,
-        actions: [IconButton(onPressed: () {}, icon: Constants.backIcon)],
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Constants.backIcon)
+        ],
       ),
       body: Form(
         key: _formKey,
@@ -76,7 +83,6 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget registerPageTextFormBuilder(labeltext, controller) {
     return TextFormField(
       validator: (text) {
-        var pass;
         if (text == null || text.trim().isEmpty) {
           return "**" + labeltext + " " + "cannot be empty **";
         } else {
@@ -86,31 +92,35 @@ class _RegisterPageState extends State<RegisterPage> {
                   labeltext +
                   " should contain atleast 3 characters **";
             } else {
+              firstname = text;
               return null;
             }
           } else if (labeltext == "Phone") {
             if (text.length < 10 || text.length > 10) {
               return "** " + labeltext + " must be  10 digits **";
             } else {
+              lastname = text;
               return null;
             }
           } else if (labeltext == "Email") {
             if (!RegExp(r'\S+@\S+\.\S+').hasMatch(text)) {
               return "** Please enter valid email address **";
             } else {
+              email = text;
               return null;
             }
           } else if (labeltext == "Password") {
             if (text.length > 3) {
               return null;
             } else {
-              pass = text;
+              password = text;
               return "** Password must contain atleast 3 characters **";
             }
           } else if (labeltext == "Confirm Password") {
-            if (text != pass) {
+            if (text != password) {
               return "** Does not match with password. please retype that matches the password **";
             } else {
+              confirmpassword = text;
               return null;
             }
           }
@@ -122,6 +132,4 @@ class _RegisterPageState extends State<RegisterPage> {
       ),
     );
   }
-
-  _validator(text, labeltext) {}
 }

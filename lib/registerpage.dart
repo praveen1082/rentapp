@@ -104,6 +104,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget registerPageTextFormBuilder(labeltext, controller) {
+    var temp;
     return TextFormField(
       validator: (text) {
         if (text == null || text.trim().isEmpty) {
@@ -134,18 +135,23 @@ class _RegisterPageState extends State<RegisterPage> {
             }
           } else if (labeltext == "Password") {
             if (text.length > 3) {
+              password = text;
+              temp = password;
+              print(temp);
               return null;
             } else {
-              password = text;
               return "** Password must contain atleast 3 characters **";
             }
           } else if (labeltext == "Confirm Password") {
-            if (text != password) {
-              return "** Does not match with password. please retype that matches the password **";
-            } else {
+            // print("i am confirm password: " + temp);
+            if (text == password) {
               confirmpassword = text;
               return null;
+            } else {
+              return "** Does not match with password. please retype that matches the password **";
             }
+          } else {
+            return null;
           }
         }
       },

@@ -75,11 +75,49 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget registerPageTextFormBuilder(labeltext, controller) {
     return TextFormField(
-      //validator: _validator(controller.text),
+      validator: _validator(controller.text, labeltext),
       controller: controller,
       decoration: InputDecoration(
         labelText: labeltext,
       ),
     );
+  }
+
+  _validator(text, labeltext) {
+    var pass;
+    if (text == null || text.trim().isEmpty) {
+      return "**" + labeltext + " " + "cannot be empty **";
+    } else {
+      if (labeltext == "First Name" || labeltext == "Last Name") {
+        if (text.length < 3) {
+          return "** " + labeltext + " should contain atleast 3 characters **";
+        } else {
+          return null;
+        }
+      } else if (labeltext == "Phone") {
+        if (text.length < 10 || text.length > 10) {
+          return "** " + labeltext + " must be  10 digits **";
+        } else {
+          return null;
+        }
+      } else if (labeltext == "Email") {
+        if (!RegExp(r'\S+@\S+\.\S+').hasMatch(text)) {
+          return "** Please enter valid email address **";
+        } else {
+          return null;
+        }
+      } else if (labeltext == "Password") {
+        if (text.length > 3) {
+          return null;
+        } else {
+          pass = text;
+          return "** Password must contain atleast 3 characters **";
+        }
+      } else if (labeltext == "Confirm Password") {
+        if (text != pass) {
+          return "** Does not match with password. please retype that matches the password **";
+        }
+      }
+    }
   }
 }

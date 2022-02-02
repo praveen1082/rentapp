@@ -10,6 +10,17 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  @override
+  void dispose() {
+    firstnamecontroller.dispose();
+    lastnamecontroller.dispose();
+    emailcontroller.dispose();
+    phonecontroller.dispose();
+    passwordcontroller.dispose();
+    confirmpasswordcontroller.dispose();
+    super.dispose();
+  }
+
   final _formKey = GlobalKey<FormState>();
   var firstname, lastname, email, phone, password, confirmpassword;
   TextEditingController firstnamecontroller = TextEditingController();
@@ -58,7 +69,19 @@ class _RegisterPageState extends State<RegisterPage> {
                 Constants.confirmPasswordLabelRegisterPage,
                 confirmpasswordcontroller),
             Constants.bigSizedBoxHorizontal,
-            Constants.customButton(Constants.registerbuttonlabel),
+            Container(
+              height: Constants.buttonContainerHeight,
+              child: ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      print("Success");
+                    } else {
+                      print("unsuccess");
+                    }
+                  },
+                  child: Constants.registerbuttonlabel),
+            ),
+            // Constants.customButton(Constants.registerbuttonlabel),
             Constants.bigSizedBoxHorizontal,
             Row(
               children: const [

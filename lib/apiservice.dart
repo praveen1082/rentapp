@@ -8,13 +8,14 @@ class DataResponse<T> {
 }
 
 class ApiService {
-  final String baseUrl = "http://localhost:8081";
+  final String baseUrl = "http://localhost:8080";
   var dio = Dio();
   ApiService() {
     dio.options
       ..baseUrl = baseUrl
       ..headers = {
         'content-type': 'application/json',
+        "Access-Control_Allow_Origin": "*"
       };
   }
   //Fututre<UserModel>
@@ -40,7 +41,7 @@ class ApiService {
       print(password);
       print(confirmPassword);
       if (password == confirmPassword) {
-        var response = await dio.post('/user', data: u.toJson());
+        var response = await dio.post('/api/user', data: u.toJson());
         print(response.statusCode);
         print(response.data);
 

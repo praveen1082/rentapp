@@ -12,23 +12,6 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   ApiService service = ApiService();
-  @override
-  void initState() {
-    super.initState();
-    service = ApiService();
-  }
-
-  @override
-  void dispose() {
-    firstnamecontroller.dispose();
-    lastnamecontroller.dispose();
-    emailcontroller.dispose();
-    phonecontroller.dispose();
-    passwordcontroller.dispose();
-    confirmpasswordcontroller.dispose();
-    super.dispose();
-  }
-
   final _formKey = GlobalKey<FormState>();
   var firstname, lastname, email, phone, password, confirmpassword;
   TextEditingController firstnamecontroller = TextEditingController();
@@ -38,9 +21,34 @@ class _RegisterPageState extends State<RegisterPage> {
   TextEditingController passwordcontroller = TextEditingController();
   TextEditingController confirmpasswordcontroller = TextEditingController();
   @override
+  void initState() {
+    super.initState();
+
+    service = ApiService();
+  }
+
+  @override
+  void dispose() {
+    firstname.dispose();
+    lastname.dispose();
+    email.dispose();
+    phone.dispose();
+    password.dispose();
+    confirmpassword.dispose();
+    firstnamecontroller.dispose();
+    lastnamecontroller.dispose();
+    emailcontroller.dispose();
+    phonecontroller.dispose();
+    passwordcontroller.dispose();
+    confirmpasswordcontroller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(widget.title),
         centerTitle: Constants.centerappbarTitle,
         elevation: Constants.appbarElevation,
@@ -58,29 +66,138 @@ class _RegisterPageState extends State<RegisterPage> {
           shrinkWrap: true,
           padding: Constants.wholePagePadding,
           children: [
-            registerPageTextFormBuilder(
-                Constants.firstNameLabelRegisterPage, firstnamecontroller),
+            // registerPageTextFormBuilder(
+            //     Constants.firstNameLabelRegisterPage, firstnamecontroller),
+            TextFormField(
+              controller: firstnamecontroller,
+              decoration: InputDecoration(
+                  labelText: Constants.firstNameLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.firstNameLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (text.length < 3) {
+                    return "** First Name should contain at least 3 characters";
+                  } else {
+                    firstname = text;
+                    return null;
+                  }
+                }
+              },
+            ),
+
             Constants.smallSizedBoxHorizontal,
-            registerPageTextFormBuilder(
-                Constants.lastNameLabelRegisterPage, lastnamecontroller),
+            TextFormField(
+              controller: lastnamecontroller,
+              decoration: InputDecoration(
+                  labelText: Constants.lastNameLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.lastNameLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (text.length < 3) {
+                    return "** last Name should contain at least 3 characters";
+                  } else {
+                    lastname = text;
+                    return null;
+                  }
+                }
+              },
+            ),
+
             Constants.smallSizedBoxHorizontal,
-            registerPageTextFormBuilder(
-                Constants.emailLabelRegisterPage, emailcontroller),
+            TextFormField(
+              controller: emailcontroller,
+              decoration:
+                  InputDecoration(labelText: Constants.emailLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.emailLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (!RegExp(r'\S+@\S+\.\S+').hasMatch(text)) {
+                    return "** Please insert a valid email address **";
+                  } else {
+                    email = text;
+                    return null;
+                  }
+                }
+              },
+            ),
             Constants.smallSizedBoxHorizontal,
-            registerPageTextFormBuilder(
-                Constants.phoneLabelRegisterPage, phonecontroller),
+            TextFormField(
+              controller: phonecontroller,
+              decoration:
+                  InputDecoration(labelText: Constants.phoneLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.phoneLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (text.length != 10 || text.length > 10) {
+                    return "** Please insert valid phone number**";
+                  } else {
+                    phone = text;
+                    return null;
+                  }
+                }
+              },
+            ),
             Constants.smallSizedBoxHorizontal,
-            registerPageTextFormBuilder(
-                Constants.passwordLabelRegisterPage, passwordcontroller),
+            TextFormField(
+              controller: passwordcontroller,
+              decoration: InputDecoration(
+                  labelText: Constants.passwordLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.passwordLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (text.length < 3) {
+                    return "** Password must contain atleast 3 characters **";
+                  } else {
+                    password = text;
+                    return null;
+                  }
+                }
+              },
+            ),
             Constants.smallSizedBoxHorizontal,
-            registerPageTextFormBuilder(
-                Constants.confirmPasswordLabelRegisterPage,
-                confirmpasswordcontroller),
+            TextFormField(
+              controller: confirmpasswordcontroller,
+              decoration: InputDecoration(
+                  labelText: Constants.confirmPasswordLabelRegisterPage),
+              validator: (text) {
+                if (text == null || text.trim().isEmpty) {
+                  return "**" +
+                      Constants.confirmPasswordLabelRegisterPage +
+                      "cannot be empty **";
+                } else {
+                  if (text != password) {
+                    return "** Passwords does not match **";
+                  } else {
+                    confirmpassword = text;
+                    return null;
+                  }
+                }
+              },
+            ),
             Constants.bigSizedBoxHorizontal,
             Container(
               height: Constants.buttonContainerHeight,
               child: ElevatedButton(
                   onPressed: () {
+                    password != null
+                        ? print(
+                            "printing value of password from here: " + password)
+                        : print("Password is null");
                     if (_formKey.currentState!.validate()) {
                       CircularProgressIndicator();
                       final snackBar = SnackBar(
@@ -88,7 +205,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         duration: Duration(seconds: 2),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
-                      Future.delayed(Duration(seconds: 5));
+                      //Future.delayed(Duration(seconds: 5));
 
                       // final materialBanner = MaterialBanner(content: , actions: actions)
                       // print("Success");
@@ -100,6 +217,19 @@ class _RegisterPageState extends State<RegisterPage> {
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
+                    // print(confirmpassword +
+                    //     ":" +
+                    //     password +
+                    //     ":" +
+                    //     phone +
+                    //     ":" +
+                    //     firstname +
+                    //     ":" +
+                    //     lastname +
+                    //     ":" +
+                    //     phone +
+                    //     ":" +
+                    //     email);
                     service
                         .register(phone, firstname, lastname, email, password,
                             confirmpassword)
@@ -112,6 +242,8 @@ class _RegisterPageState extends State<RegisterPage> {
                         ScaffoldMessenger.of(context).showSnackBar(snackBar);
                         Future.delayed(Duration(seconds: 2));
                         Navigator.pop(context);
+                      } else {
+                        print("object>>>?????????????????????");
                       }
                     });
                   },
@@ -135,65 +267,6 @@ class _RegisterPageState extends State<RegisterPage> {
             Constants.smallSizedBoxHorizontal,
           ],
         ),
-      ),
-    );
-  }
-
-  Widget registerPageTextFormBuilder(labeltext, controller) {
-    var temp;
-    return TextFormField(
-      validator: (text) {
-        if (text == null || text.trim().isEmpty) {
-          return "**" + labeltext + " " + "cannot be empty **";
-        } else {
-          if (labeltext == "First Name" || labeltext == "Last Name") {
-            if (text.length < 3) {
-              return "** " +
-                  labeltext +
-                  " should contain atleast 3 characters **";
-            } else {
-              firstname = text;
-              return null;
-            }
-          } else if (labeltext == "Phone") {
-            if (text.length < 10 || text.length > 10) {
-              return "** " + labeltext + " must be  10 digits **";
-            } else {
-              lastname = text;
-              return null;
-            }
-          } else if (labeltext == "Email") {
-            if (!RegExp(r'\S+@\S+\.\S+').hasMatch(text)) {
-              return "** Please enter valid email address **";
-            } else {
-              email = text;
-              return null;
-            }
-          } else if (labeltext == "Password") {
-            if (text.length > 3) {
-              password = text;
-              temp = password;
-              print(temp);
-              return null;
-            } else {
-              return "** Password must contain atleast 3 characters **";
-            }
-          } else if (labeltext == "Confirm Password") {
-            // print("i am confirm password: " + temp);
-            if (text == password) {
-              confirmpassword = text;
-              return null;
-            } else {
-              return "** Does not match with password. please retype that matches the password **";
-            }
-          } else {
-            return null;
-          }
-        }
-      },
-      controller: controller,
-      decoration: InputDecoration(
-        labelText: labeltext,
       ),
     );
   }

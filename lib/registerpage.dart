@@ -74,7 +74,15 @@ class _RegisterPageState extends State<RegisterPage> {
               child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
+                      CircularProgressIndicator();
+                      final snackBar = SnackBar(
+                        content: Text("Registering User"),
+                        duration: Duration(seconds: 2),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      // final materialBanner = MaterialBanner(content: , actions: actions)
                       print("Success");
+                      Navigator.pop(context);
                     } else {
                       print("unsuccess");
                     }

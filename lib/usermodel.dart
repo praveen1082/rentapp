@@ -1,25 +1,42 @@
-import 'package:rentapp/datamodel.dart';
-import 'package:rentapp/responsemodel.dart';
-
 class UserModel {
-  dynamic code;
-  dynamic response;
+  var id;
+  var firstName;
+  var lastName;
+  var phone;
+  var email;
+  var isOwner;
+  var password;
 
-  UserModel({this.code, this.response});
+  UserModel({
+    this.id,
+    this.firstName,
+    this.lastName,
+    this.phone,
+    this.email,
+    this.isOwner,
+    this.password,
+  });
 
   UserModel.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
-    response = json['response'] != null
-        ? new Response.fromJson(json['response'])
-        : null;
+    id = json['id'];
+    firstName = json['firstName'];
+    lastName = json['lastName'];
+    phone = json['phone'];
+    email = json['email'];
+    isOwner = json['isOwner'];
+    password = json['password'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['code'] = this.code;
-    if (this.response != null) {
-      data['response'] = this.response.toJson();
-    }
+    data['id'] = this.id;
+    data['firstName'] = this.firstName;
+    data['lastName'] = this.lastName;
+    data['phone'] = this.phone;
+    data['email'] = this.email;
+    data['isOwner'] = this.isOwner;
+    data['password'] = this.password;
+
     return data;
   }
 }

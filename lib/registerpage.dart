@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:rentapp/apiservice.dart';
 import 'package:rentapp/constants.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -10,6 +11,13 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  ApiService service = ApiService();
+  @override
+  void initState() {
+    super.initState();
+    service = ApiService();
+  }
+
   @override
   void dispose() {
     firstnamecontroller.dispose();
@@ -80,12 +88,32 @@ class _RegisterPageState extends State<RegisterPage> {
                         duration: Duration(seconds: 2),
                       );
                       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                      Future.delayed(Duration(seconds: 5));
+
                       // final materialBanner = MaterialBanner(content: , actions: actions)
-                      print("Success");
-                      Navigator.pop(context);
+                      // print("Success");
+                      //Navigator.pop(context);
                     } else {
-                      print("unsuccess");
+                      final snackBar = SnackBar(
+                        content: Text("Validation error"),
+                        duration: Duration(seconds: 2),
+                      );
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
                     }
+                    service
+                        .register(phone, firstname, lastname, email, password,
+                            confirmpassword)
+                        .then((value) {
+                      if (value.success) {
+                        final snackBar = SnackBar(
+                          content: Text("Registered Successfully"),
+                          duration: Duration(seconds: 2),
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                        Future.delayed(Duration(seconds: 2));
+                        Navigator.pop(context);
+                      }
+                    });
                   },
                   child: Constants.registerbuttonlabel),
             ),

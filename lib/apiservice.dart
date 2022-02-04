@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:rentapp/loginmodel.dart';
 import 'package:rentapp/usermodel.dart';
 
 class DataResponse<T> {
@@ -83,23 +84,28 @@ class ApiService {
     return r;
   }
 
-  Future<bool> login(username, password) async {
+  Future<DataResponse<dynamic>> login(username, password) async {
+    DataResponse r = new DataResponse();
+    LoginModel loginmodelinstance = new LoginModel();
     try {
       var response = await dio.post('/api/user/login',
           data: {"email": username, "password": password});
       if (response.statusCode == 200) {
-        return true;
-      } else {
-        var data = response.data;
-        print("Printing data got from login api: " + data);
-        if (data.message == "Success") {
-          return true;
+        r = getResponse(response.statusCode, response.data);
+        if (r.success) {
+          //var userModel = UserModel.fromJson(responsebody);
+          var logindata = LoginModel.fromJson(response.data as Map<String,dynamic>);
+          r.data = logindata;
+          return r;
         }
+      } else {
+        r.success = false;
+        return r;
       }
-      return true;
-    } catch (e) {
-      return false;
+    } on DioError catch (e) {
+      return r;
     }
+    return r;
   }
 }
 

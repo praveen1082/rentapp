@@ -103,11 +103,14 @@ class _LoginPageState extends State<LoginPage> {
                         .login(usernameController.text, passwordcontroller.text)
                         .then((value) {
                       print("value value is: " + value.toString());
-                      if (value) {
+                      if (value.success) {
+                        var isOwner = value.data.isOwner;
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => HomePage()));
+                                builder: (context) => HomePage(
+                                      isOwner: isOwner,
+                                    )));
                       } else {
                         final snackBar = SnackBar(
                           content: Text("Cannot login"),

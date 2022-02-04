@@ -17,7 +17,10 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: Constants.centerappbarTitle,
         title: Text("Home Page"),
-        automaticallyImplyLeading: false,
+        // automaticallyImplyLeading: false,
+      ),
+      drawer: Drawer(
+        child: Text("I am a drawer"),
       ),
       body: Center(
         child: owner

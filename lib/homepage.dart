@@ -14,15 +14,21 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     var owner = widget.isOwner;
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: Constants.centerappbarTitle,
-          title: Text("Home Page"),
-          automaticallyImplyLeading: false,
-        ),
-        body: Center(
-          child: owner
-              ? Text("This is a homepage for owner")
-              : Text("This is a homepage for renter"),
-        ));
+      appBar: AppBar(
+        centerTitle: Constants.centerappbarTitle,
+        title: Text("Home Page"),
+        automaticallyImplyLeading: false,
+      ),
+      body: Center(
+        child: owner
+            ? Text("This is a homepage for owner")
+            : Text("This is a homepage for renter"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Colors.white,
+      ),
+    );
   }
 }

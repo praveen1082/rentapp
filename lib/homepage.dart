@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    var owner = widget.isOwner;
+    var isOwner = widget.isOwner;
     return Scaffold(
       appBar: AppBar(
         centerTitle: Constants.centerappbarTitle,
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
         child: Text("I am a drawer"),
       ),
       body: Center(
-        child: owner
+        child: isOwner
             ? Text("This is a homepage for owner")
             : Text("This is a homepage for renter"),
       ),

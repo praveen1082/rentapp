@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:rentapp/constants.dart';
+import 'package:rentapp/owner.dart';
 
 class HomePage extends StatefulWidget {
   final isOwner;
@@ -23,11 +24,11 @@ class _HomePageState extends State<HomePage> {
         child: Text("I am a drawer"),
       ),
       body: Center(
-        child: isOwner
-            ? Text("This is a homepage for owner")
-            : Text("This is a homepage for renter"),
+        child: isOwner ? Owner() : Text("This is a homepage for renter"),
       ),
       floatingActionButton: FloatingActionButton(
+        clipBehavior: Clip.antiAlias,
+        tooltip: 'Add House',
         onPressed: () {},
         child: Icon(Icons.add),
         backgroundColor: Colors.white,

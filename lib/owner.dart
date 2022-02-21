@@ -12,7 +12,7 @@ class Owner extends StatelessWidget {
         Container(
           // color: Colors.white,
           width: double.infinity,
-          height: 100,
+          height: 120,
           margin: EdgeInsets.all(5),
           //width: 200,
           child: ListView(
@@ -39,12 +39,62 @@ class Owner extends StatelessWidget {
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
                     ),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Expanded(
-                      child: Card(
-                        color: Colors.red,
-                        child: Container(
-                          width: double.infinity,
-                          child: Text("Hello world"),
+                      child: Container(
+                        padding: EdgeInsets.all(10),
+                        width: double.infinity,
+                        color: Colors.green[200],
+                        // height: 100,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Total flats:",
+                                ),
+                                Text("5"),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text("Total rent:"),
+                                Text("5000"),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Expanded(child: Text("Total rent received:")),
+                                Expanded(child: Text("5000000000000000000")),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                              ],
+                            ),
+                          ],
                         ),
                       ),
                     ),
@@ -63,7 +113,13 @@ class Owner extends StatelessWidget {
                 ),
                 child: Card(
                   color: Colors.blue,
-                  child: Text("Hello "),
+                  child: Column(
+                    children: [
+                      Text("Total flats:"),
+                      Text("Total rent:"),
+                      Text("Total rent received:"),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(width: 10),
